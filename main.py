@@ -1,9 +1,6 @@
 import pandas as pd
 
-
-def train(data):
-    pass
-
+from model import model
 
 if __name__ == '__main__':
     # load data
@@ -17,4 +14,11 @@ if __name__ == '__main__':
     train_data = data.sample(frac=0.8)
     test_data = data.drop(train_data.index)
 
-    train(data)
+    # train the model using testing data
+    model = model()
+    model.train(data)
+
+    # predicting the data
+    predictions = model.predict(test_data)
+
+    print(predictions)
